@@ -65,6 +65,20 @@ body {
     margin-bottom: 5px;
 }
 
+.step-number-not{
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .step p {
     font-size: 0.9em;
 }
@@ -95,7 +109,7 @@ body {
 }
 
 .optional-btn {
-    border: 2px solid #333;
+    border: 2px solid #003366;
     background-color: #fff;
     color: #333;
     font-weight: bold;
@@ -106,7 +120,7 @@ body {
 }
 
 .optional-btn:hover, .optional-btn:active {
-    background-color: #007bff;
+    background-color: #003366;
     color: #fff;
 }
 
@@ -115,6 +129,11 @@ body {
     font-weight: bold;
     padding: 10px 30px;
     border-radius: 5px;
+    background-color: #003366;
+}
+
+.advance-btn:hover,.advance-btn:active{
+    background-color: #007bff;
 }
 
 @media (max-width: 768px) {
