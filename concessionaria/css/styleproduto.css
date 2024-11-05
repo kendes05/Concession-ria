@@ -1,15 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.container {
-    margin-top: 40px;
+.fortal {
+    color: black;
+    font-weight: bold;
+}
+
+.motors {
+    color: #003366;
+    font-weight: bold;
+}
+
+.user{
+    color: #003366;
+    font-weight: bold;
+}
+
+.carousel-control-prev{
+    border: 0px;
+}
+
+
+.carousel-control-next{
+    border: 0px;
 }
 
 .product-image {
     height: 400px; 
     object-fit: contain; 
     border-radius: 5px;
+}
+
+.btn-default{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:  5px;
+	border: 1px solid #003366;
+	background-color: #003366;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    height: 40px;
 }
 
 .carousel-inner {
@@ -41,11 +79,17 @@ body {
 .price {
     font-size: 26px;
     font-weight: bold;
-    color: #000;
+    color: #003366;
 }
 
 .message-box {
     max-width: 100%;
+}
+
+.btn-block{
+    background-color:#003366;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .carousel-control-prev-icon,
