@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylecadastro.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo Fortalmotors" class="logo">
+            </a>
+            <h1><span class="fortal">Fortal</span><span class="motors">Motors</span></h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Destaques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Marcas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Financiamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Test Drive</a>
+                    </li>
+                </ul>
+                <a href="#" class="user-icon">
+                    <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/user.png" alt="user"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Cadastro de Produto</h2>
+        
+        <div class="steps d-flex justify-content-center my-4">
+            <div class="step text-center">
+                <div class="step-number">1</div>
+                <p>Preencha os dados do veículo</p>
+            </div>
+            <div class="step text-center">
+                <div class="step-number">2</div>
+                <p>Destaque seu anúncio</p>
+            </div>
+            <div class="step text-center">
+                <div class="step-number">3</div>
+                <p>Finalize seu anúncio</p>
+            </div>
+        </div>
+
+        <div class="upload-area text-center my-4 p-4 border">
+            <p>Adicione imagens</p>
+        </div>
+
+        <div class="vehicle-info text-center mb-4">
+            <h3>Nome do Veículo</h3>
+            <p>Descrição</p>
+        </div>
+
+        <form action="Opcionais.html" method="post">
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Preço</label>
+                    <input type="text" class="form-control" placeholder="R$ ****" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Ano</label>
+                    <input type="text" class="form-control" placeholder="**/**/**" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Câmbio</label>
+                    <input type="text" class="form-control" placeholder="***" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Cor</label>
+                    <input type="text" class="form-control" placeholder="****" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label>Combustível</label>
+                    <input type="text" class="form-control" placeholder="*****" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Final de placa</label>
+                    <input type="text" class="form-control" placeholder="*" required>
+                </div>
+                <div class="col-md-3">
+                    <label>KM</label>
+                    <input type="text" class="form-control" placeholder="*" required>
+                </div>
+            </div>
+
+            <div class="row mb-3 text-center">
+                <div class="col-md-6">
+                    <label>TEST-DRIVE</label>
+                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" name="testdrive" id="sim" autocomplete="off" required> SIM
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" name="testdrive" id="nao" autocomplete="off" required> NÃO
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Tipo do Veículo</label>
+                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" name="tipoveiculo" id="carro" autocomplete="off" required> Carro
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" name="tipoveiculo" id="moto" autocomplete="off" required> Moto
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Avançar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
