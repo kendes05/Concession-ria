@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produto</title>
+    <title>Finalizar Cadastro - Fortalmotors</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/concessionaria/css/stylecadastro.css">
+    <link rel="stylesheet" href="/concessionaria/css/Resumo.css">
     <link rel="icon" type="image/png" href="/concessionaria/img/logo2.png">
-    <script src="/concessionaria/script/cadastro.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -43,99 +43,47 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-5">
-        <h2 class="text-center">Cadastro de Produto</h2>
-        
-        <div class="steps d-flex justify-content-center my-4">
-            <div class="step text-center">
-                <div class="step-number">1</div>
-                <p>Preencha os dados do veículo</p>
-            </div>
-            <div class="step text-center">
-                <div class="step-number-not">2</div>
-                <p>Destaque seu anúncio</p>
-            </div>
-            <div class="step text-center">
-                <div class="step-number-not">3</div>
-                <p>Finalize seu anúncio</p>
-            </div>
+    
+    <div class="steps d-flex justify-content-center my-4">
+        <div class="step text-center">
+            <div class="step-number">1</div>
+            <p>Preencha os dados do veículo</p>
         </div>
+        <div class="step text-center">
+            <div class="step-number">2</div>
+            <p>Destaque seu anúncio</p>
+        </div>
+        <div class="step text-center">
+            <div class="step-number">3</div>
+            <p>Finalize seu anúncio</p>
+        </div>
+    </div>
 
-        <div class="upload-area text-center my-4 p-4 border">
-            <p>Adicione imagens</p>
+
+    <div class="card mt-5">
+        <h3 class="text-center">Resumo do anúncio</h3>
+        
+        <div class="upload-area text-center mb-4">
+            <img src="/concessionaria/img/carro1.png" alt="Carro Resumo">
         </div>
 
         <div class="vehicle-info text-center mb-4">
-            <h3>Nome do Veículo</h3>
-            <p>Descrição</p>
+            <h4>Nome do Veículo</h4>
+            <p>Fiat Fastback</p>
         </div>
 
-        <form action="Opcionais.html" method="post">
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label>Preço</label>
-                    <input type="text" class="form-control" placeholder="R$ ****" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Ano</label>
-                    <input type="text" class="form-control" placeholder="**/**/**" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Câmbio</label>
-                    <input type="text" class="form-control" placeholder="***" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Cor</label>
-                    <input type="text" class="form-control" placeholder="****" required>
-                </div>
-            </div>
+        <div class="mb-3">
+            <p><strong>Valor do Carro:</strong> Fiat Fastback - R$127.000,00</p>
+        </div>
+        <div class="mb-3">
+            <h4><strong>Preço:</strong> R$127.000,00</h4>
+        </div>
 
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label>Combustível</label>
-                    <input type="text" class="form-control" placeholder="*****" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Final de placa</label>
-                    <input type="text" class="form-control" placeholder="*" required>
-                </div>
-                <div class="col-md-3">
-                    <label>KM</label>
-                    <input type="text" class="form-control" placeholder="*" required>
-                </div>
-            </div>
-
-            <div class="row mb-3 text-center">
-                <div class="col-md-6">
-                    <label>TEST-DRIVE</label>
-                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="testdrive" id="sim" autocomplete="off" required> SIM
-                        </label>
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="testdrive" id="nao" autocomplete="off" required> NÃO
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label>Tipo do Veículo</label>
-                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="tipoveiculo" id="carro" autocomplete="off" required> Carro
-                        </label>
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="tipoveiculo" id="moto" autocomplete="off" required> Moto
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary" id="avançar">Avançar</button>
-            </div>
-        </form>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg">Finalizar</button>
+        </div>
     </div>
+
     <footer class="footer mt-5 bg-light text-dark pt-4">
         <div class="container">
             <div class="row">
