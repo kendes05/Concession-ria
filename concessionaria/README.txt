@@ -42,3 +42,67 @@ Atributo marca na tabela carro.
 Fotos no banco de dados
 Limpar filtros.
 tela-produto.
+
+create database concessionaria;
+use concessionaria;
+
+create table usuario(
+	idusuario int primary key auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null,
+    senha varchar(100) not null
+);
+
+create table marca(
+	idmarca int primary key auto_increment,
+    nome varchar(50),
+    logo varchar(100)
+);
+
+create table veiculo(
+	idveiculo int primary key auto_increment,
+    modelo varchar(100),
+    marca_idmarca int,
+    ano varchar(10),
+    preco decimal(10,2),
+    cor varchar(50),
+    foreign key (marca_idmarca) references marca(idmarca),
+    img varchar(100)
+);
+
+create table imagem(
+	idimagem int primary key auto_increment,
+    url varchar(100),
+    veiculo_idveiculo int,
+    foreign key (veiculo_idveiculo) references veiculo(idveiculo)
+    
+);
+
+create table proposta(
+	idproposta int primary key auto_increment,
+    usuario_idusuario int,
+    data date,
+    veiculo_idveiculo int,
+    valor decimal(10,2),
+    foreign key (veiculo_idveiculo) references veiculo(idveiculo),
+    foreign key (usuario_idusuario) references usuario(idusuario)
+);
+
+create table venda(
+	idvenda int primary key auto_increment,
+    usuario_idusuario int,
+    data date,
+    veiculo_idveiculo int,
+    valor decimal(10,2),
+    foreign key (veiculo_idveiculo) references veiculo(idveiculo),
+    foreign key (usuario_idusuario) references usuario(idusuario)
+);
+
+create table testdrive(
+	idtestdrive int primary key auto_increment,
+    usuario_idusuario int,
+    veiculo_idveiculo int,
+    data datetime,
+    foreign key(usuario_idusuario) references usuario(idusuario),
+    foreign key(veiculo_idveiculo) references veiculo(idveiculo)
+);
