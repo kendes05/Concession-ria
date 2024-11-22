@@ -21,18 +21,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Destaques</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Marcas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Financiamento</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Test Drive</a>
-                    </li>
+                    
                 </ul>
                     <a href="index.html" class="user">
                         Entre ou crie sua conta
@@ -40,13 +29,34 @@
             </div>
         </div>
     </nav>
+    <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#bannerCarousel" data-slide-to="1"></li>
+            <li data-target="#bannerCarousel" data-slide-to="2"></li>
+        </ol>
     
-    <div class="banner d-flex align-items-center justify-content-center text-center">
-        <button class="carousel-control-prev" aria-label="Anterior"><img width="24" height="24" src="https://img.icons8.com/forma-light-filled/24/arrow.png" alt="arrow" style="transform: rotate(180deg);"/></button>
-        <img src="/concessionaria/img/Banner.png" alt="Banner">
-        <button class="carousel-control-next" aria-label="Próximo"><img width="24" height="24" src="https://img.icons8.com/forma-light-filled/24/arrow.png" alt="arrow"/></button>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/concessionaria/img/Banner.png" class="d-block w-100" alt="Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/concessionaria/img/Banner2.jpg" class="d-block w-100" alt="Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/concessionaria/img/banner3.png" class="d-block w-100" alt="Banner 3">
+            </div>
+        </div>
+    
+        <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
     </div>
-
     <div class="search-bar my-4 text-center">
         <input type="text" class="search-input" id = "Pesquisar" placeholder="Busque por marca, modelo ou categoria">
         <button class="btn btn-primary search-button" id = "BtnBuscar">Buscar</button>

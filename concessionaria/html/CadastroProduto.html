@@ -24,18 +24,6 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Destaques</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Marcas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Financiamento</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Test Drive</a>
-                    </li>
                 </ul>
                     <a href="index.html" class="user">
                         Bem vindo, xxxx!
@@ -68,74 +56,53 @@
 
         <div class="vehicle-info text-center mb-4">
             <h3>Nome do Veículo</h3>
+            <input type="text" id="nome-veiculo" class="form-control w-50 mx-auto" placeholder="Digite o nome do veículo" required>
             <p>Descrição</p>
         </div>
 
         <form action="Opcionais.html" method="post">
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label>Preço</label>
-                    <input type="text" class="form-control" placeholder="R$ ****" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Ano</label>
-                    <input type="text" class="form-control" placeholder="**/**/**" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Câmbio</label>
-                    <input type="text" class="form-control" placeholder="***" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Cor</label>
-                    <input type="text" class="form-control" placeholder="****" required>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label>Combustível</label>
-                    <input type="text" class="form-control" placeholder="*****" required>
-                </div>
-                <div class="col-md-3">
-                    <label>Final de placa</label>
-                    <input type="text" class="form-control" placeholder="*" required>
-                </div>
-                <div class="col-md-3">
-                    <label>KM</label>
-                    <input type="text" class="form-control" placeholder="*" required>
-                </div>
-            </div>
-
-            <div class="row mb-3 text-center">
-                <div class="col-md-6">
-                    <label>TEST-DRIVE</label>
-                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="testdrive" id="sim" autocomplete="off" required> SIM
-                        </label>
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="testdrive" id="nao" autocomplete="off" required> NÃO
-                        </label>
+            <form action="Opcionais.html" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label>Tipo do Veículo</label>
+                        <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="tipoveiculo" id="carro" autocomplete="off" required> Carro
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="tipoveiculo" id="moto" autocomplete="off" required> Moto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Ano</label>
+                        <input type="text" class="form-control" placeholder="**/**/**" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Marca</label>
+                        <input type="text" class="form-control" placeholder="Marca do Veículo" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label>Tipo do Veículo</label>
-                    <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="tipoveiculo" id="carro" autocomplete="off" required> Carro
-                        </label>
-                        <label class="btn btn-outline-secondary">
-                            <input type="radio" name="tipoveiculo" id="moto" autocomplete="off" required> Moto
-                        </label>
+    
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Cor</label>
+                        <input type="text" class="form-control" placeholder="Cor do Veículo" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Modelo</label>
+                        <input type="text" class="form-control" placeholder="Modelo do Veículo" required>
                     </div>
                 </div>
-            </div>
+    
+
 
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-primary" id="avançar">Avançar</button>
             </div>
         </form>
     </div>
+
     <footer class="footer mt-5 bg-light text-dark pt-4">
         <div class="container">
             <div class="row">

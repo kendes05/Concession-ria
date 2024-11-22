@@ -57,7 +57,35 @@ body {
     align-items: center;
     justify-content: center;
 }
+#bannerCarousel {
+    margin-top: 20px; 
+}
 
+/* .carousel-inner img {
+    max-height: 400px; 
+    object-fit: cover; 
+    width: 80%; 
+} */
+
+.carousel-inner img {
+    height: auto; 
+    max-height: 400px; 
+    width: 100%; 
+    object-fit: contain; 
+    background-color: #f8f9fa; 
+} 
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent; 
+    filter: invert(44%) sepia(99%) saturate(207%) hue-rotate(196deg) brightness(94%) contrast(90%);
+   
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    filter: invert(64%) sepia(100%) saturate(459%) hue-rotate(190deg) brightness(105%) contrast(94%);
+}
 .banner-text {
     font-size: 28px;
     font-weight: bold;
