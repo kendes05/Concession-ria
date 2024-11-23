@@ -55,7 +55,6 @@ body {
     gap: 20px;
 }
 
-/* Proposta individual */
 .proposta {
     display: flex;
     align-items: center;
@@ -68,7 +67,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Imagem do carro */
 .proposta-imagem {
     width: 150px;
     height: auto;
@@ -77,7 +75,6 @@ body {
 }
 
 
-/* Detalhes da proposta */
 .proposta-detalhes {
     flex: 1;
     display: flex;
@@ -85,14 +82,12 @@ body {
     gap: 10px;
 }
 
-/* Nome do carro */
 #nome-carro {
     margin: 0;
     font-size: 1.5rem;
     color: #333;
 }
 
-/* Valor proposto */
 .proposta-valor {
     margin: 0;
     font-size: 1.2rem;
@@ -104,7 +99,6 @@ body {
     color: #003366;
 }
 
-/* Botão de exclusão */
 .btn {
     padding: 10px 20px;
     border: none;
