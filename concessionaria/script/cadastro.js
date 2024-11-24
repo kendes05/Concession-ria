@@ -1,4 +1,4 @@
 const btnAvançar = document.getElementById("avançar");
 btnAvançar.addEventListener("click",function(){
-    window.location.href="/concessionaria/html/Opcionais.html";
+    window.location.href="/concessionaria/html/Resumo.html";
 })
