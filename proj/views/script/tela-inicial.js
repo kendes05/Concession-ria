@@ -1,4 +1,6 @@
-
+const botaobuscar = document.getElementById("BtnBuscar");
+const Pesquisa = document.getElementById("Pesquisar");
+const carCardsContainer = document.querySelector('.car-section .row');
 
 const idusuario = -1
 const nomeUsuario = ""
@@ -21,10 +23,114 @@ async function getuserid(id) {
         console.error('Erro ao buscar:', error);
     }
 }
+
+async function getVeiculos() {
+    try {
+        // Monta a URL com o ID como parâmetro
+        const url = `http://localhost:3000/getveiculos`;
+        
+        // Faz a requisição GET
+        const response = await fetch(url, {
+            method: 'GET', // Especifica o método GET
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Verifica se a resposta foi bem-sucedida
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+        }
+
+        // Converte a resposta para JSON
+        const result = await response.json();
+        return result;
+
+    } catch (error) {
+        console.error('Erro ao buscar:', error);
+    }
+}
+
+
+
+async function getmarca(id) {
+    try {
+        const response = await fetch('http://localhost:3000/getmarca', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id})
+        });
+        
+        const result = await response.json();
+        
+        return result
+        
+    } catch (error) {
+        console.error('Erro ao buscar:', error);
+    }
+}
+async function getimag(id) {
+    try {
+        const response = await fetch('http://localhost:3000/getimg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id})
+        });
+        
+        const result = await response.json();
+        
+        return result
+        
+    } catch (error) {
+        console.error('Erro ao buscar:', error);
+    }
+}
 const opcoes = document.getElementById('navbar-op')
 
 
+
+
+
 async function carregar() {
+            const data = await getVeiculos()
+            data.forEach((veiculo, index) => {
+                var imagem = getimag(veiculo.idveiculo);
+                
+                const cardHTML = `
+                        <div class="colmd3" idveiculo="${veiculo.idveiculo}">
+                            <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
+                            <div class="car-card">
+                                <img src="${imagem.url || '/concessionaria/img/carro1.png'}" alt="${veiculo.modelo}" class="car-image">
+                                <p class="car-title">${veiculo.modelo}</p>
+                                <p class="car-price">R$ ${veiculo.preco}</p>
+                             </div>
+                            </a>
+                        </div>
+
+                    `;
+                    carCardsContainer.innerHTML += cardHTML;
+                // Seleciona o card específico com base no índice
+                const card = document.querySelectorAll('.car-card')[index];
+
+                if (card) {
+                    
+                    // Preenche as informações no card
+                    const carImage = card.querySelector('.car-image');
+                    const carTitle = card.querySelector('.car-title');
+                    const carPrice = card.querySelector('.car-price');
+
+                    // Atualiza os dados no card
+                    carImage.src = veiculo.img || '/concessionaria/img/carro1.png';  // Atualiza a imagem, caso o valor seja nulo, insere imagem padrão
+                    carTitle.textContent = veiculo.modelo;  // Atualiza o nome do modelo
+                    carPrice.textContent = `R$ ${veiculo.preco}`;  // Atualiza o preço
+                }
+            });
+    
+        
     const userid = sessionStorage.getItem('userid');
     if (userid) {
         console.log(userid)
@@ -88,4 +194,76 @@ async function carregar() {
     }
 }
 
+
+
+
 carregar()
+
+
+botaobuscar.addEventListener("click", async function() {
+    const buscaValor = Pesquisa.value.trim();  // Pega o valor da pesquisa
+
+    // Exibe no console o que o usuário digitou
+    console.log("Buscando por:", buscaValor);
+
+    // Verifica se o campo de pesquisa está vazio
+    if (buscaValor === '') {
+        alert("Por favor, digite um valor para a busca!");
+        return;
+    }
+
+    // Realiza a busca no servidor e filtra os resultados
+            const data = await getVeiculos()
+
+            // Limpa os cards existentes antes de adicionar novos
+            carCardsContainer.innerHTML = '';
+
+            // Adiciona os carros no DOM
+            if (data.length === 0) {
+                carCardsContainer.innerHTML = '<p>Nenhum carro encontrado para a pesquisa.</p>';
+            } else {
+                console.log(data)
+                data.forEach(veiculo =>{
+                    
+                    pesquisar(veiculo,buscaValor)
+
+
+                    
+                });
+            }
+        
+
+
+        
+       
+        
+
+        
+        
+});
+
+async function pesquisar(veiculo,buscaValor) {
+    console.log(veiculo)
+                    console.log("chegou")
+                    
+                    var marca =  await getmarca(veiculo.marca_idmarca);
+                    console.log(marca)
+                    var imagem = getimag(veiculo.idveiculo);
+                    if((veiculo.modelo).includes(buscaValor) || (marca[0].nome).includes(buscaValor)){
+                console.log(veiculo.idveiculo)
+                    const cardHTML = `
+                        <div class="colmd3" idveiculo="${veiculo.idveiculo}">
+                            <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
+                            <div class="car-card">
+                                <img src="${veiculo.img || '/concessionaria/img/carro1.png'}" alt="${veiculo.modelo}" class="car-image">
+                                <p class="car-title">${veiculo.modelo}</p>
+                                <p class="car-price">R$ ${veiculo.preco}</p>
+                             </div>
+                            </a>
+                        </div>
+
+                    `;
+                    carCardsContainer.innerHTML += cardHTML;
+                    }
+
+}
