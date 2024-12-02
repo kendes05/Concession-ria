@@ -90,7 +90,7 @@ const ano = document.getElementById("textoAno")
 const tipo = document.getElementById("textoTipo")
 const preco = document.getElementById("textoPreco")
 
-const btntest = document.getElementById("btntestdrive")
+
 
 const nome = document.getElementById("textnome")
 const email = document.getElementById("textemail")
@@ -102,16 +102,36 @@ const btnenviar = document.getElementById("btnenviar")
 
 
 async function carregar(){
-    const userId = sessionStorage.getItem("userid")
-    console.log(userId)
-    //veiculoid =sessionStorage.getItem("veiculoId")
-   
+    userId = sessionStorage.getItem("userId")
+    veiculoid =sessionStorage.getItem("veiculoId")
+    
     
     const veiculoid = 1
+    if (veiculoid){
+        idveiculo = veiculoid
+
+        let veiculo = await getveiculoid(veiculoid)
+        var marcaveiculo = await getmarcaid(veiculo.marca_idmarca)
+        marcaveiculo = marcaveiculo[0]
+        
+        
+        marca.textContent = (marcaveiculo.nome).toUpperCase()+" "
+        var modelo = document.createElement("spam")
+        modelo.className = 'text-primary'
+        modelo.textContent = (veiculo.modelo).toUpperCase()
+        marca.appendChild(modelo)
+        marca2.innerHTML = `<strong>Marca:</strong> ${marcaveiculo.nome}`
+
+        modelo2.innerHTML = `<strong>Modelo :</strong> ${veiculo.modelo}`
+        ano.innerHTML = `<strong>Ano:</strong> ${veiculo.ano}`
+        cor.innerHTML = `<strong>Cor:</strong> ${veiculo.cor}`
+        tipo.innerHTML = `<strong>Tipo:</strong> ${veiculo.tipo}`
+        preco.textContent = "R$ "+(+veiculo.preco).toFixed(2)
+    }
     if(userId && veiculoid){
 
         iduser = userId
-        idveiculo = veiculoid
+        
 
     let usuario = await getuserid(userId)
 
@@ -160,7 +180,7 @@ async function carregar(){
 
     }
 
-    let veiculo = await getveiculoid(veiculoid)
+    
 
     usuario = usuario[0]
     veiculo = veiculo[0]
@@ -169,28 +189,11 @@ async function carregar(){
     document.getElementById('perfilusuario').classList.remove('user');
     document.getElementById('perfilusuario').style.color = 'black';
 
-    var marcaveiculo = await getmarcaid(veiculo.marca_idmarca)
-    marcaveiculo = marcaveiculo[0]
     
-    
-    marca.textContent = (marcaveiculo.nome).toUpperCase()+" "
-    var modelo = document.createElement("spam")
-    modelo.className = 'text-primary'
-    modelo.textContent = (veiculo.modelo).toUpperCase()
-    marca.appendChild(modelo)
-    marca2.innerHTML = `<strong>Marca:</strong> ${marcaveiculo.nome}`
-
-    modelo2.innerHTML = `<strong>Modelo :</strong> ${veiculo.modelo}`
-    ano.innerHTML = `<strong>Ano:</strong> ${veiculo.ano}`
-    cor.innerHTML = `<strong>Cor:</strong> ${veiculo.cor}`
-    tipo.innerHTML = `<strong>Tipo:</strong> ${veiculo.tipo}`
-    preco.textContent = "R$ "+(+veiculo.preco).toFixed(2)
         
         
     }
-    else{
-        btntest.style.display = 'none'
-    }
+    
 
     
 }
@@ -203,7 +206,7 @@ btnenviar.addEventListener('click', async() => {
     if(iduser!=0){
        console.log(nome.value)
        if(nome.value!="" && email.value!="" && cpf.value!="" && valor.value!=""){
-            //idusuario,nome,email,cpf,idveiculo,valor
+            
            
             await adicionarProposta(iduser,idveiculo,valor.value)
        }else{
