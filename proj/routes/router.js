@@ -35,16 +35,7 @@ router.post("/conferirsenha",usercontroller.conferirSenha)
 router.post("/limparverif",usercontroller.limparVerif)
 
 
-//testdrive
 
-//adiciona um testdrive (idusuario, data, idveiculo)
-router.post("/addtestdrive",testdrivecontroller.addTestDrive)
-//deleta um testdrive (id)
-router.post("/deletetestdrive",testdrivecontroller.deleteTestDrive)
-//retorna um testdrive (id)
-router.post("/gettestdrive",testdrivecontroller.getTestDrive)
-//retorna todos os test drives
-router.get("/gettestdrives",testdrivecontroller.getTestDrives)
 
 
 
@@ -54,29 +45,17 @@ router.get("/gettestdrives",testdrivecontroller.getTestDrives)
 router.get("/getveiculos",veiculoController.getVeiculos)
 //retorna veiculo pelo id (id)
 router.post("/getveiculo",veiculoController.getVeiculo)
-//retorna a imagem destaque do veiculo (id)
-router.post("/getimg",veiculoController.getImagem)
-//retorna todas as imagens do veiculo
-router.post("/getimgs",veiculoController.getFotos)
-//adiciona uma imagem ao veiculo (url, idveiculo)
-router.post("/addimg",veiculoController.addImg)
-//retorna a marca do veiculo (id)
+
+
 router.post("/getmarca",veiculoController.getMarca)
-//adiciona um veiculo (modelo, marca_idmarca, ano, preco, cor, tipo)
+//adiciona um veiculo (modelo, marca, ano, preco, cor,imagem)
 router.post("/addveiculo",veiculoController.addVeiculo)
 //deleta um veiculo pelo id
 router.post("/addveiculo",veiculoController.deleteVeiculo)
 
 
 
-//vendas
 
-//retorna todas as vendas
-router.get("/getvendas",vendaController.getVendas)
-//retorna as vendas do usuario (idusuario)
-router.post("/getvenda",vendaController.getVenda)
-//adiciona uma venda (idusuario, idveiculo, valor)
-router.post("/addvenda",vendaController.addVenda)
 
 
 //propostas
