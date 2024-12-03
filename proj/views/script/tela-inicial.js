@@ -58,42 +58,37 @@ async function getVeiculos() {
 const opcoes = document.getElementById('navbar-op')
 
 
+function enviarDados(idVeiculo) {
+    // Armazena o ID do veículo no localStorage
+    localStorage.setItem('veiculoId', idVeiculo);
+
+    // Redireciona para a página TelaProduto.html
+    window.location.href = 'TelaProduto.html';
+}
 
 
+async function gerarCard(veiculo) {
+    const cardHTML = `
+                    <div class="colmd3" idveiculo="${veiculo.idveiculo}">
+                        <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(${veiculo.idveiculo});">
+                            <div class="car-card">
+                                <img src="${veiculo.imagem || '../img/carro1.png'}" alt="${veiculo.modelo}" class="car-image">
+                                <p class="car-title">${veiculo.modelo}</p>
+                                <p class="car-price">R$ ${veiculo.preco}</p>
+                            </div>
+                        </a>
+                    </div>
+                `;
+        
+                // Adiciona o card ao container
+                carCardsContainer.innerHTML += cardHTML;
+}
 
 async function carregar() {
             const data = await getVeiculos()
-            data.forEach((veiculo, index) => {
+            data.forEach((veiculo) => {
+                gerarCard(veiculo);
                 
-                
-                const cardHTML = `
-                        <div class="colmd3" idveiculo="${veiculo.idveiculo}">
-                            <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
-                            <div class="car-card">
-                                <img src="${veiculo.imagem}" alt="${veiculo.modelo}" class="car-image">
-                                <p class="car-title">${veiculo.modelo}</p>
-                                <p class="car-price">R$ ${veiculo.preco}</p>
-                             </div>
-                            </a>
-                        </div>
-
-                    `;
-                    carCardsContainer.innerHTML += cardHTML;
-                // Seleciona o card específico com base no índice
-                const card = document.querySelectorAll('.car-card')[index];
-
-                if (card) {
-                    
-                    // Preenche as informações no card
-                    const carImage = card.querySelector('.car-image');
-                    const carTitle = card.querySelector('.car-title');
-                    const carPrice = card.querySelector('.car-price');
-
-                    // Atualiza os dados no card
-                    carImage.src = veiculo.imagem || '/concessionaria/img/carro1.png';  // Atualiza a imagem, caso o valor seja nulo, insere imagem padrão
-                    carTitle.textContent = veiculo.modelo;  // Atualiza o nome do modelo
-                    carPrice.textContent = `R$ ${veiculo.preco}`;  // Atualiza o preço
-                }
             });
     
         
@@ -211,20 +206,8 @@ async function pesquisar(veiculo,buscaValor) {
                     
                     
                     if((veiculo.modelo).includes(buscaValor) || (veiculo.marca).includes(buscaValor)){
-                console.log(veiculo.idveiculo)
-                    const cardHTML = `
-                        <div class="colmd3" idveiculo="${veiculo.idveiculo}">
-                            <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
-                            <div class="car-card">
-                                <img src="${veiculo.imagem}" alt="${veiculo.modelo}" class="car-image">
-                                <p class="car-title">${veiculo.modelo}</p>
-                                <p class="car-price">R$ ${veiculo.preco}</p>
-                             </div>
-                            </a>
-                        </div>
-
-                    `;
-                    carCardsContainer.innerHTML += cardHTML;
+                
+                    gerarCard(veiculo)
                     }
 
 }
