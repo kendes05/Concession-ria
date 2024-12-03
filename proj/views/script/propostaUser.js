@@ -57,44 +57,6 @@ async function removerProposta(id) {
     }
 }
 
-async function getmarcaid(id) {
-    
-    try {
-        const response = await fetch('http://localhost:3000/getmarca', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id})
-        });
-        
-        const result = await response.json();
-        
-        return result
-        
-    } catch (error) {
-        console.error('Erro ao buscar:', error);
-    }
-}
-
-async function getimgveiculo(id) {
-    try {
-        const response = await fetch('http://localhost:3000/getimg', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id})
-        });
-        
-        const result = await response.json();
-        
-        return result
-        
-    } catch (error) {
-        console.error('Erro ao buscar:', error);
-    }
-}
 
 async function getpropostasusuario(idusuario) {
     try {
@@ -143,17 +105,14 @@ async function carregar() {
             op1.href = 'PropostasADM.html'
             op1.className = 'nav-link'
             op1.textContent = 'Propostas'
-            var op2 = document.createElement('a')
-            op2.href = 'TestdrivesADM.html'
-            op2.className = 'nav-link'
-            op2.textContent = 'Test-drives'
+            
             var op3 = document.createElement('a')
             op3.href = 'CadastroProduto.html'
             op3.className = 'nav-link'
             op3.textContent = 'Cadastrar'
 
             propostas2.appendChild(op1)
-            testdrives.appendChild(op2)
+            
             cadastrar.appendChild(op3)
             opcoes.appendChild(propostas2)
             opcoes.appendChild(testdrives)
@@ -193,23 +152,22 @@ const lista = document.getElementById("lista_propostas")
 async function criarElementos(proposta) {
         
         let veiculoproposta = (await getveiculoid(proposta.veiculo_idveiculo))[0];
-        let marca = await getmarcaid(veiculoproposta.marca_idmarca)
         console.log(veiculoproposta)
-        let imgveiculo = await getimgveiculo(veiculoproposta.idveiculo)
+        
         var list_item = document.createElement("li");
         var item_div = document.createElement("div");
         item_div.className = 'proposta';
 
         var item_img = document.createElement("img");
         item_img.className = 'proposta-imagem'//img
-        item_img.src = imgveiculo.url
+        item_img.src = veiculoproposta.imagem
 
 
         var item_div2 = document.createElement("div");
         item_div2.className = 'proposta-detalhes';
         var item_name = document.createElement("h2");
-        console.log(marca)
-        item_name.textContent = marca[0].nome + " "+veiculoproposta.modelo;//nome
+        
+        item_name.textContent = veiculo.marca+ " "+veiculoproposta.modelo;//nome
 
         var item_valorporposto = document.createElement("h2");
         item_valorporposto.className = "proposta-valor"
