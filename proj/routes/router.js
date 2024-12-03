@@ -47,7 +47,6 @@ router.get("/getveiculos",veiculoController.getVeiculos)
 router.post("/getveiculo",veiculoController.getVeiculo)
 
 
-router.post("/getmarca",veiculoController.getMarca)
 //adiciona um veiculo (modelo, marca, ano, preco, cor,imagem)
 router.post("/addveiculo",veiculoController.addVeiculo)
 //deleta um veiculo pelo id
