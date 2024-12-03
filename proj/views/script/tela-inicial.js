@@ -53,42 +53,8 @@ async function getVeiculos() {
 
 
 
-async function getmarca(id) {
-    try {
-        const response = await fetch('http://localhost:3000/getmarca', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id})
-        });
-        
-        const result = await response.json();
-        
-        return result
-        
-    } catch (error) {
-        console.error('Erro ao buscar:', error);
-    }
-}
-async function getimag(id) {
-    try {
-        const response = await fetch('http://localhost:3000/getimg', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id})
-        });
-        
-        const result = await response.json();
-        
-        return result
-        
-    } catch (error) {
-        console.error('Erro ao buscar:', error);
-    }
-}
+
+
 const opcoes = document.getElementById('navbar-op')
 
 
@@ -98,13 +64,13 @@ const opcoes = document.getElementById('navbar-op')
 async function carregar() {
             const data = await getVeiculos()
             data.forEach((veiculo, index) => {
-                var imagem = getimag(veiculo.idveiculo);
+                
                 
                 const cardHTML = `
                         <div class="colmd3" idveiculo="${veiculo.idveiculo}">
                             <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
                             <div class="car-card">
-                                <img src="${imagem.url || '/concessionaria/img/carro1.png'}" alt="${veiculo.modelo}" class="car-image">
+                                <img src="${veiculo.imagem}" alt="${veiculo.modelo}" class="car-image">
                                 <p class="car-title">${veiculo.modelo}</p>
                                 <p class="car-price">R$ ${veiculo.preco}</p>
                              </div>
@@ -124,7 +90,7 @@ async function carregar() {
                     const carPrice = card.querySelector('.car-price');
 
                     // Atualiza os dados no card
-                    carImage.src = veiculo.img || '/concessionaria/img/carro1.png';  // Atualiza a imagem, caso o valor seja nulo, insere imagem padrão
+                    carImage.src = veiculo.imagem || '/concessionaria/img/carro1.png';  // Atualiza a imagem, caso o valor seja nulo, insere imagem padrão
                     carTitle.textContent = veiculo.modelo;  // Atualiza o nome do modelo
                     carPrice.textContent = `R$ ${veiculo.preco}`;  // Atualiza o preço
                 }
@@ -153,17 +119,14 @@ async function carregar() {
             op1.href = 'PropostasADM.html'
             op1.className = 'nav-link'
             op1.textContent = 'Propostas'
-            var op2 = document.createElement('a')
-            op2.href = 'TestdrivesADM.html'
-            op2.className = 'nav-link'
-            op2.textContent = 'Test-drives'
+            
             var op3 = document.createElement('a')
             op3.href = 'CadastroProduto.html'
             op3.className = 'nav-link'
             op3.textContent = 'Cadastrar'
 
             propostas.appendChild(op1)
-            testdrives.appendChild(op2)
+            
             cadastrar.appendChild(op3)
             opcoes.appendChild(propostas)
             opcoes.appendChild(testdrives)
@@ -246,16 +209,14 @@ async function pesquisar(veiculo,buscaValor) {
     console.log(veiculo)
                     console.log("chegou")
                     
-                    var marca =  await getmarca(veiculo.marca_idmarca);
-                    console.log(marca)
-                    var imagem = getimag(veiculo.idveiculo);
-                    if((veiculo.modelo).includes(buscaValor) || (marca[0].nome).includes(buscaValor)){
+                    
+                    if((veiculo.modelo).includes(buscaValor) || (veiculo.marca).includes(buscaValor)){
                 console.log(veiculo.idveiculo)
                     const cardHTML = `
                         <div class="colmd3" idveiculo="${veiculo.idveiculo}">
                             <a href="TelaProduto.html" onclick="event.preventDefault(); enviarDados(this.closest('.colmd3'));">
                             <div class="car-card">
-                                <img src="${veiculo.img || '/concessionaria/img/carro1.png'}" alt="${veiculo.modelo}" class="car-image">
+                                <img src="${veiculo.imagem}" alt="${veiculo.modelo}" class="car-image">
                                 <p class="car-title">${veiculo.modelo}</p>
                                 <p class="car-price">R$ ${veiculo.preco}</p>
                              </div>
