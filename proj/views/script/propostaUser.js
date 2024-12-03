@@ -167,7 +167,7 @@ async function criarElementos(proposta) {
         item_div2.className = 'proposta-detalhes';
         var item_name = document.createElement("h2");
         
-        item_name.textContent = veiculo.marca+ " "+veiculoproposta.modelo;//nome
+        item_name.textContent = veiculoproposta.marca+ " "+veiculoproposta.modelo;//nome
 
         var item_valorporposto = document.createElement("h2");
         item_valorporposto.className = "proposta-valor"
