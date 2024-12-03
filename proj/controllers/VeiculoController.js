@@ -25,36 +25,12 @@ class VeiculoController{
     }
 
 
-    static async getImagem(req,res){
-        const id = req.body.id
-        var results=await veiculoModel.getImagem(id)
-
-        if(results)
-        res.send(results)
-    }
-
-    static async getFotos(req,res){
-        const id = req.body.id
-        var results=await veiculoModel.getFotos(id)
-
-        if(results)
-        res.send(results)
-    }
-
-    static async getMarca(req,res){
-        const id = req.body.id
-        console.log(id)
-        var results=await veiculoModel.getMarca(id)
-
-        if(results)
-        res.send(results)
-    }
-
+    
     static async addVeiculo(req,res){
-        const {modelo,marca_idmarca,ano,preco,cor,tipo} = req.body
+        const {modelo, marca, ano, preco, cor,imagem} = req.body
         
         try{
-            await veiculoModel.addVeiculo(modelo,marca_idmarca,ano,preco,cor,tipo)
+            await veiculoModel.addVeiculo(modelo, marca, ano, preco, cor,imagem)
         }catch(error){
             console.error("Erro ao adicionar veiculo:", error);
         }
@@ -69,17 +45,7 @@ class VeiculoController{
         res.send(results)
     }
 
-    static async addImg(req,res){
-        const {url,idveiculo} = req.body
-   
-
-        try{
-            await veiculoModel.addImg(url,idveiculo)
-        }catch(error){
-            console.error("Erro ao adicionar imagem:", error);
-        }
-        
-    }
+    
 
 }
 
