@@ -36,7 +36,7 @@ async function emailPropostaAceita(email, valor) {
         from: 'fortalmotors100@gmail.com',
         to: email,
         subject: 'Proposta aceita',
-        text: `Parabéns!!! Sua proposta foi aceita, valor a pagar: $${valor.toFixed(2)}`
+        text: `Parabéns!!! Sua proposta foi aceita, valor a pagar: $${valor}`
     };
 
     await transporter.sendMail(mailOptions);
