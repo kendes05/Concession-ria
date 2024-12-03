@@ -31,10 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="CadastroProduto.html">Cadastrar</a>
                 </li>
-                
             </ul>
-            <a href="Entrar.html" class="user">
-                Entre ou crie sua conta
+            <a href="Entrar.html" class="user" id="adm">
+                Bem vindo, FortalMotors!
             </a>
         </div>
     </div>
@@ -63,38 +62,30 @@
             <p>Descrição</p>
         </div>
 
-        <form action="Resumo.html" method="post">
-            <form action="Resumo.html" method="post">
                 <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label>Tipo do Veículo</label>
-                        <div class="btn-group btn-group-toggle d-block" data-toggle="buttons">
-                            <label class="btn btn-outline-secondary">
-                                <input type="radio" name="tipoveiculo" id="carro" autocomplete="off" required> Carro
-                            </label>
-                            <label class="btn btn-outline-secondary">
-                                <input type="radio" name="tipoveiculo" id="moto" autocomplete="off" required> Moto
-                            </label>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-4">
                         <label>Ano</label>
-                        <input type="text" class="form-control" placeholder="**/**/**" required>
+                        <input type="text" class="form-control"  id="ano"  placeholder="**/**/**" required>
                     </div>
                     <div class="col-md-4">
                         <label>Marca</label>
-                        <input type="text" class="form-control" placeholder="Marca do Veículo" required>
+                        <input type="text" class="form-control" id="marca" placeholder="Marca do Veículo" required>
                     </div>
                 </div>
     
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label>Cor</label>
-                        <input type="text" class="form-control" placeholder="Cor do Veículo" required>
+                        <input type="text" class="form-control" id="cor" placeholder="Cor do Veículo" required>
                     </div>
                     <div class="col-md-6">
                         <label>Modelo</label>
-                        <input type="text" class="form-control" placeholder="Modelo do Veículo" required>
+                        <input type="text" class="form-control" id="modelo" placeholder="Modelo do Veículo" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>preço</label>
+                        <input type="text" class="form-control" id="preco" placeholder="R$ 000.00" required>
                     </div>
                 </div>
     
