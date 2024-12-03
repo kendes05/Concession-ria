@@ -85,7 +85,7 @@ const btnenviar = document.getElementById("btnenviar")
 async function carregar(){
     
     const veiculoid = sessionStorage.getItem("veiculoId")
-    const userId = sessionStorage.getItem("userId")
+    const userId = await sessionStorage.getItem("userId")
     console.log(userId)
     
     console.log(veiculoid)
@@ -118,11 +118,12 @@ async function carregar(){
 
     let usuario = await getuserid(userId)
 
-    if(usuario.idusuario === 1){
+    if(userId == 1){
+        console.log("oi")
         var propostas = document.createElement('li')
         propostas.className = 'nav-item'
         
-        testdrives.className = 'nav-item'
+        
         var cadastrar = document.createElement('li')
         cadastrar.className = 'nav-item'
 
@@ -144,7 +145,7 @@ async function carregar(){
         
         opcoes.appendChild(cadastrar)
     }else{
-        
+       
         var propostas = document.createElement('li')
         propostas.className = 'nav-item'
 
@@ -164,7 +165,7 @@ async function carregar(){
     
 
     usuario = usuario[0]
-    veiculo = veiculo[0]
+    
 
     document.getElementById('perfilusuario').textContent = `Bem-vindo, ${usuario.nome}`;
     document.getElementById('perfilusuario').classList.remove('user');
