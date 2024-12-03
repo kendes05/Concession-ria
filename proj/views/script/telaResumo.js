@@ -1,3 +1,24 @@
+
+const ano = sessionStorage.getItem("ano");
+const modelo = sessionStorage.getItem("modelo");
+const cor = sessionStorage.getItem("cor");
+const marca = sessionStorage.getItem("marca");
+const preco = sessionStorage.getItem("preco")
+const img = sessionStorage.getItem("img")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function getVeiculo(id) {
     try {
         const response = await fetch('http://localhost:3000/getveiculo', {
@@ -34,29 +55,82 @@ async function getuserid(id) {
     }
 }
 
-async function carregar() {
-    const userId = sessionStorage.getItem("userId");
-    if (userId) {
-        let usuario = await getuserid(userId);
-        usuario = usuario[0];
-
-        document.getElementById('perfilusuario').textContent = `Bem-vindo, ${usuario.nome}`;
-        document.getElementById('perfilusuario').classList.remove('user');
-        document.getElementById('perfilusuario').style.color = 'black';
 
 
-        const veiculoId = sessionStorage.getItem("veiculoId"); 
-        if (veiculoId) {
-            let veiculo = await getVeiculo(veiculoId);
-            veiculo = veiculo[0];
 
-            document.getElementById('nome-veiculo').textContent = veiculo.nomeVeiculo;
-            document.getElementById('marcaEModelo').textContent = veiculo.marcaModelo;
-            document.getElementById('precoVeiculo').textContent = `Preço: R$${veiculo.preco}`;
 
-            document.querySelector('.upload-area img').setAttribute('src', veiculo.imagem);
-        }
+    
+
+console.log(marca)
+
+document.getElementById('anov').textContent = `Ano: ${ano}`;
+document.getElementById('corv').textContent = `Cor: ${cor}`;
+document.getElementById('precov').textContent = `Preço: R$${preco}`;
+document.getElementById('nomev').textContent = `${marca} ${modelo}`;
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+async function addveiculo(modelo, marca, ano, preco, cor,imagem) {
+    try {
+        console.log("usou a funcao")
+        const response = await fetch('http://localhost:3000/addveiculo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({modelo, marca, ano, preco, cor,imagem})
+        });
+        
+        const result = await response.json();
+        
+        return result
+        
+    } catch (error) {
+        console.error('Erro ao buscar:', error);
     }
 }
 
-carregar();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const btnfinalizar = document.getElementById("finalizar")
+btnfinalizar.addEventListener("click",async()=>{
+
+    await addveiculo(modelo,marca,ano,preco,cor,img)
+
+
+
+})
+
+
+
+
+
+
+
+
