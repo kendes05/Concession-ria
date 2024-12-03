@@ -58,11 +58,13 @@ async function getVeiculos() {
 const opcoes = document.getElementById('navbar-op')
 
 
-function enviarDados(idVeiculo) {
+async function enviarDados(idVeiculo) {
     // Armazena o ID do veículo no localStorage
-    localStorage.setItem('veiculoId', idVeiculo);
+    console.log(idVeiculo)
+   
+    sessionStorage.setItem("veiculoId", idVeiculo);
 
-    // Redireciona para a página TelaProduto.html
+    
     window.location.href = 'TelaProduto.html';
 }
 
