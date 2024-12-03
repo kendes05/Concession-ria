@@ -1,5 +1,6 @@
 const propostaModel = require("../models/Proposta")
 const emailc = require('../utils/confirmarEmail')
+const userModel = require("../models/User")
 
 function pegarDataParaMySQL() {
     const dataAtual = new Date();
@@ -58,13 +59,14 @@ class PropostaController{
 
     static async aceitarProposta(req,res){
         const id = req.body.id
-
+        console.log(id)
         var results=await propostaModel.getProposta(id)
         if (results){
-            var email = results[0].email
-            var valor = results[0].valor
+            var usuarioid = results[0].usuario_idusuario
+            var result = await userModel.getUserById(usuarioid)
+            console.log(result)
 
-            await emailc.emailPropostaAceita(email, valor);
+            await emailc.emailPropostaAceita(result[0].email, result[0].valor);
 
 
             if(id){
@@ -86,13 +88,14 @@ class PropostaController{
 
     static async negarProposta(req,res){
         const id = req.body.id
-
+        console.log(id)
         var results=await propostaModel.getProposta(id)
+        
         if (results){
-            var email = results[0].email
-      r
-
-            await emailc.emailPropostaRecusada(email)
+            var usuarioid = results[0].usuario_idusuario
+            var result = await userModel.getUserById(usuarioid)
+            console.log(result)
+            await emailc.emailPropostaRecusada(result[0].email)
 
 
             if(id){
