@@ -37,25 +37,7 @@ async function getveiculoid(id) {
     }
 }
 
-async function getmarcaid(id) {
-    
-    try {
-        const response = await fetch('http://localhost:3000/getmarca', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id})
-        });
-        
-        const result = await response.json();
-        
-        return result
-        
-    } catch (error) {
-        console.error('Erro ao buscar:', error);
-    }
-}
+
 
 async function adicionarProposta(idusuario,idveiculo,valor) {
     
@@ -87,7 +69,7 @@ const marca2 = document.getElementById("marca")
 const modelo2 = document.getElementById("modelo")
 const cor = document.getElementById("cor")
 const ano = document.getElementById("textoAno")
-const tipo = document.getElementById("textoTipo")
+
 const preco = document.getElementById("textoPreco")
 
 
@@ -100,35 +82,36 @@ const valor = document.getElementById("textvalor")
 const btnenviar = document.getElementById("btnenviar")
 
 
-
 async function carregar(){
-    userId = sessionStorage.getItem("userId")
-    veiculoid =sessionStorage.getItem("veiculoId")
     
+    const veiculoid = sessionStorage.getItem("veiculoId")
+    const userId = sessionStorage.getItem("userId")
+    console.log(userId)
     
-    const veiculoid = 1
+    console.log(veiculoid)
     if (veiculoid){
         idveiculo = veiculoid
 
         let veiculo = await getveiculoid(veiculoid)
-        var marcaveiculo = await getmarcaid(veiculo.marca_idmarca)
-        marcaveiculo = marcaveiculo[0]
+        
+        veiculo = veiculo[0]
         
         
-        marca.textContent = (marcaveiculo.nome).toUpperCase()+" "
+        
+        marca.textContent = (veiculo.marca)+" "
         var modelo = document.createElement("spam")
         modelo.className = 'text-primary'
-        modelo.textContent = (veiculo.modelo).toUpperCase()
+        modelo.textContent = (veiculo.modelo)
         marca.appendChild(modelo)
-        marca2.innerHTML = `<strong>Marca:</strong> ${marcaveiculo.nome}`
+        marca2.innerHTML = `<strong>Marca:</strong> ${veiculo.marca}`
 
         modelo2.innerHTML = `<strong>Modelo :</strong> ${veiculo.modelo}`
         ano.innerHTML = `<strong>Ano:</strong> ${veiculo.ano}`
         cor.innerHTML = `<strong>Cor:</strong> ${veiculo.cor}`
-        tipo.innerHTML = `<strong>Tipo:</strong> ${veiculo.tipo}`
+        
         preco.textContent = "R$ "+(+veiculo.preco).toFixed(2)
     }
-    if(userId && veiculoid){
+    if(userId){
 
         iduser = userId
         
@@ -138,7 +121,7 @@ async function carregar(){
     if(usuario.idusuario === 1){
         var propostas = document.createElement('li')
         propostas.className = 'nav-item'
-        var testdrives = document.createElement('li')
+        
         testdrives.className = 'nav-item'
         var cadastrar = document.createElement('li')
         cadastrar.className = 'nav-item'
@@ -147,20 +130,18 @@ async function carregar(){
         op1.href = 'PropostasADM.html'
         op1.className = 'nav-link'
         op1.textContent = 'Propostas'
-        var op2 = document.createElement('a')
-        op2.href = 'TestdrivesADM.html'
-        op2.className = 'nav-link'
-        op2.textContent = 'Test-drives'
+        
+        
         var op3 = document.createElement('a')
         op3.href = 'CadastroProduto.html'
         op3.className = 'nav-link'
         op3.textContent = 'Cadastrar'
 
         propostas.appendChild(op1)
-        testdrives.appendChild(op2)
+        
         cadastrar.appendChild(op3)
         opcoes.appendChild(propostas)
-        opcoes.appendChild(testdrives)
+        
         opcoes.appendChild(cadastrar)
     }else{
         
