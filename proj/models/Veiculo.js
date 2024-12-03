@@ -30,7 +30,7 @@ class VeiculoModel{
 
     static async addVeiculo(modelo, marca, ano, preco, cor,imagem){
         return new Promise((resolve, reject) => {
-            db.query('insert into veiculo(modelo,marca,ano,preco,cor) values (?,?,?,?,?,?)', [modelo, marca, ano, preco, cor,imagem], (error, result) => {
+            db.query('insert into veiculo(modelo,marca,ano,preco,cor,imagem) values (?,?,?,?,?,?)', [modelo, marca, ano, preco, cor,imagem], (error, result) => {
                 if (error) {
                     return reject(error);
                 }
