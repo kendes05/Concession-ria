@@ -19,6 +19,25 @@ async function getveiculoid(id) {
     }
 }
 
+async function getuserid(id) {
+    try {
+        const response = await fetch('http://localhost:3000/getuserbyid', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id})
+        });
+        
+        const result = await response.json();
+        
+        return result
+        
+    } catch (error) {
+        console.error('Erro ao buscar:', error);
+    }
+}
+
 async function aceitarProposta(id) {
     try {
         const response = await fetch('http://localhost:3000/aceitarproposta', {
@@ -77,7 +96,7 @@ async function getPropostas() {
 
 
 async function carregar(){
-    
+   
 
     
         let propostas = await getPropostas()
@@ -111,8 +130,9 @@ carregar()
 
 async function criarItem(proposta){
     
-    let cliente = await getuserid(proposta.cliente_idcliente)
+    let cliente = await getuserid(proposta.usuario_idusuario)
     let veiculo = await getveiculoid(proposta.veiculo_idveiculo)
+    console.log(veiculo)
 
     var li = document.createElement("li")
     var div = document.createElement("div")
