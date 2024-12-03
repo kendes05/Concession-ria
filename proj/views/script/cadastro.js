@@ -15,6 +15,7 @@ btnAvançar.addEventListener("click",function(){
     sessionStorage.setItem("cor",cor.value)
     sessionStorage.setItem("modelo",modelo.value)
     sessionStorage.setItem("marca",marca.value)
+    sessionStorage.setItem("preco",preco.value)
     sessionStorage.setItem("img",img)
 
 
